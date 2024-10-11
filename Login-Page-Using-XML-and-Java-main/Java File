@@ -64,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
                 if (cursor.moveToFirst()) {
                     // Successful login
                     showMessage("Login Successful", "You have successfully logged in :)");
+                    // Start the next activity (e.g., Home.class)
                     Intent in = new Intent(getApplicationContext(), Home.class);
                     startActivity(in);
                 } else {
