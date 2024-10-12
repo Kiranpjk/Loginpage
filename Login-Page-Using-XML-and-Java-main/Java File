@@ -50,21 +50,21 @@ public class MainActivity extends AppCompatActivity {
                 String name = username.getEditText().getText().toString();
                 String pass = password.getEditText().getText().toString();
 
-                // Input Validation
+            
                 if (name.isEmpty() || pass.isEmpty()) {
                     showMessage("Error", "Please fill in all fields.");
                     return;
                 }
 
-                // Hash the password for comparison
+      
                 String hashedPass = hashPassword(pass);
 
-                // Database Validation
+    
                 Cursor cursor = ld.validate(name, hashedPass);
                 if (cursor.moveToFirst()) {
-                    // Successful login
+                
                     showMessage("Login Successful", "You have successfully logged in :)");
-                    // Start the next activity (e.g., Home.class)
+                   
                     Intent in = new Intent(getApplicationContext(), Home.class);
                     startActivity(in);
                 } else {
@@ -103,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
         builder.show();
     }
 
-    // Helper Function to Hash Passwords
+ 
     private String hashPassword(String password) {
         try {
             MessageDigest digest = MessageDigest.getInstance("SHA-256"); // Use a strong hash algorithm
@@ -115,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    // Helper Function for Converting Bytes to Hex String
+  
     private String bytesToHex(byte[] hash) {
         StringBuilder hexString = new StringBuilder();
         for (byte b : hash) {
@@ -129,7 +129,7 @@ public class MainActivity extends AppCompatActivity {
     }
 }
 
-// Database Class
+
 class LoginData extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "login_database.db";
     private static final int DATABASE_VERSION = 1;
@@ -166,5 +166,5 @@ class LoginData extends SQLiteOpenHelper {
         return cursor;
     }
 
-    // ... (Implement methods for createUser and changePassword)
+
 }
